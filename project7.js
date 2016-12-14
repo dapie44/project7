@@ -1,5 +1,11 @@
 var screen = document.getElementById("screen")
 var namespace = "http://www.w3.org/2000/svg"
+var colorSelect = document.getElementById("colorSelect");
+var shapeSelect = document.getElementById("shapeSelect");
+var sizeSelect = document.getElementById("sizeSelect");
+var size;
+var color;
+var shape;
 
 // utility function
 function transformPoint(event) {
@@ -30,13 +36,17 @@ function drawCircle(x, y, r, color) {
   screen.appendChild(newCircle);
 }
 // Step 3: Event listeners
-var examplecanvas = document.getElementById("screen");
 
-examplecanvas.addEventListener("mousedown", function(event) {
- var pt = transformPoint(event, examplecanvas)
- var x = pt.x
- var y = pt.y
+screen.addEventListener("mousemove", function(event) {
+ var pt = transformPoint(event)
+ shape = shapeSelect.value;
+ color = colorSelect.value;
+ size = sizeSelect.value;
 
- drawCircle.setAttribute("cx", x)
- drawCircle.setAttribute("cy", y)
+ if(shape == "square") {
+   drawSquare(pt.x, pt.y, size, color);
+ }
+ else if (shape == "circle") {./
+   drawCircle(pt.x, pt.y, size, color)
+ }
 })
