@@ -6,6 +6,7 @@ var sizeSelect = document.getElementById("sizeSelect");
 var size;
 var color;
 var shape;
+var drawing = false;
 
 // utility function
 function transformPoint(event) {
@@ -46,7 +47,16 @@ screen.addEventListener("mousemove", function(event) {
  if(shape == "square") {
    drawSquare(pt.x, pt.y, size, color);
  }
- else if (shape == "circle") {./
+ else if (shape == "circle") {
    drawCircle(pt.x, pt.y, size, color)
  }
 })
+screen.addEventListener("mousedown", function(event){
+  drawing = true;
+})
+screen.addEventListener("mouseup", function(event){
+  drawing = false;
+})
+if(drawing == "true") {
+
+}
